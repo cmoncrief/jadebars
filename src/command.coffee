@@ -4,7 +4,7 @@ jadebars = require './jadebars'
 module.exports.run =  ->
 
   program
-    .version('0.1.0')
+    .version('0.1.1')
     .usage('[options] [path ...]')
     .option('-o, --output <path>', 'output path')
     .option('-w, --watch', 'watch files for changes')
