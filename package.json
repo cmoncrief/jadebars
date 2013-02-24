@@ -1,0 +1,43 @@
+{
+  "name": "jadebars",
+  "version": "0.1.0",
+  "author": "Charles Moncrief <cmoncrief@gmail.com>",
+  "description": "Compile Jade to precompiled Handlebars templates",
+  "main": "lib/jadebars.js",
+  "bin": {
+    "jadebars": "./bin/jadebars"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "prepublish": "cake build",
+    "test": "cake test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmoncrief/jadebars.git"
+  },
+  "keywords": [
+    "jade",
+    "handlebars",
+    "precompile",
+    "templates",
+    "cli"
+  ],
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "coffee-script": "~1.4.0",
+    "mocha": "~1.8.1"
+  },
+  "dependencies": {
+    "jade": "~0.28.1",
+    "handlebars": "~1.0.8",
+    "commander": "~1.1.1",
+    "glob": "~3.1.20",
+    "mkdirp": "~0.3.4",
+    "beholder": "~0.1.0",
+    "xcolor": "~0.1.0"
+  }
+}
