@@ -37,7 +37,7 @@
     "commander": "~1.1.1",
     "glob": "~3.1.20",
     "mkdirp": "~0.3.4",
-    "beholder": "~0.1.1",
-    "xcolor": "~0.1.0"
+    "xcolor": "~0.1.0",
+    "beholder": "~0.1.2"
   }
 }
