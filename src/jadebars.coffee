@@ -5,7 +5,9 @@ handlebars = require 'handlebars'
 glob       = require 'glob'
 mkdirp     = require 'mkdirp'
 beholder   = require 'beholder'
+uglify     = require 'uglify-js'
 xcolor     = require 'xcolor'
+
 
 class Jadebars
 
@@ -15,6 +17,7 @@ class Jadebars
     
     @options.watch ?= false
     @options.silent ?= true
+    @options.minify ?= false
     @options.join = true if @options.output and path.extname(@options.output)
 
     @initColors()
@@ -123,8 +126,14 @@ class Jadebars
       output += "\ntemplates['#{path.basename(i.file, '.jade')}'] = template(#{i.compiled});"
 
     output += "\n})();\n"
-
+    
+    output = @minify output if @options.minify
     {outputPath: @options.output, output: output}
+
+  minify: (input) ->
+
+    result = uglify.minify input, {fromString: true}
+    result.code
 
   wrapSource: (source) ->
 
@@ -134,6 +143,8 @@ class Jadebars
          templates['#{path.basename(source.file, '.jade')}'] = template(#{source.compiled});
          })();
          """
+
+    source.output = @minify source.output if @options.minify
 
   initColors: ->
 

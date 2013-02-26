@@ -9,16 +9,16 @@ Install globally via npm:
     $ npm install -g jadebars
 
 ## Usage
-
     Usage: jadebars [options] [path ...]
 
     Options:
 
       -h, --help           output usage information
       -V, --version        output the version number
+      -m, --minify         minify output files
       -o, --output <path>  output path
-      -w, --watch          watch files for changes
       -s, --silent         suppress console output
+      -w, --watch          watch files for changes
 
 #### Examples
 
@@ -38,6 +38,10 @@ Compile all input to a single file:
     
     $ jadebars input/ -o joined.js
 
+Compile with minification:
+
+    $ jadebars input/ -o joined.js -m
+
 Compile and watch for changes:
 
     $ jadebars input/ -o output/ -w
@@ -50,9 +54,10 @@ Compiles all .jade files found in `inputPaths`, which can be a single string or 
 
 ##### Options:
 
+* `minify` - (boolean) Compress output files. Defaults to false.
 * `output` - (string) The path to the output file. If the path has a file extension, all files will be joined at that location. Otherwise, the path is assumed to be a directory.
-* `watch` - (boolean) Watch all files and directories for changes and recompile automatically. Defaults to false.
 * `silent` - (boolean) Suppress all console output. Defaults to true.
+* `watch` - (boolean) Watch all files and directories for changes and recompile automatically. Defaults to false.
 
 ##### Example:
 

@@ -27,7 +27,6 @@ describe 'Compile', ->
     assert testFile.length
     assert.equal testFile, controls[0]
 
-
   it 'should compile a directory of jade files', ->
 
     jadebars "#{fixturePath}/compile"

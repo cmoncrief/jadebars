@@ -6,9 +6,10 @@ module.exports.run =  ->
   program
     .version('0.1.1')
     .usage('[options] [path ...]')
+    .option('-m, --minify', 'minify output files')
     .option('-o, --output <path>', 'output path')
-    .option('-w, --watch', 'watch files for changes')
     .option('-s, --silent', 'suppress console output')
+    .option('-w, --watch', 'watch files for changes')
 
     program.parse process.argv
 
@@ -16,6 +17,7 @@ module.exports.run =  ->
       output  : program.output
       watch   : program.watch
       silent  : program.silent || false
+      minify  : program.minify
 
     console.log '' unless options.silent
     jadebars program.args, options

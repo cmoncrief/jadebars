@@ -38,6 +38,7 @@
     "glob": "~3.1.20",
     "mkdirp": "~0.3.4",
     "xcolor": "~0.1.0",
-    "beholder": "~0.1.2"
+    "beholder": "~0.1.2",
+    "uglify-js": "~2.2.5"
   }
 }
