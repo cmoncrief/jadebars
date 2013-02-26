@@ -1,6 +1,6 @@
 {
   "name": "jadebars",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "Charles Moncrief <cmoncrief@gmail.com>",
   "description": "Compile Jade to precompiled Handlebars templates",
   "main": "lib/jadebars.js",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "jade": "~0.28.1",
-    "handlebars": "1.0.9",
+    "handlebars": "~1.0.9",
     "commander": "~1.1.1",
     "glob": "~3.1.20",
     "mkdirp": "~0.3.4",
