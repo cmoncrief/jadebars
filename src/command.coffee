@@ -4,7 +4,7 @@ jadebars = require './jadebars'
 module.exports.run =  ->
 
   program
-    .version('0.1.1')
+    .version('0.2.1')
     .usage('[options] [path ...]')
     .option('-m, --minify', 'minify output files')
     .option('-o, --output <path>', 'output path')

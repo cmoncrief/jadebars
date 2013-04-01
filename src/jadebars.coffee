@@ -29,7 +29,7 @@ class Jadebars
 
     for inputPath in @inputPaths
       files = glob.sync inputPath
-      @addSource file for file in files
+      @addSource file, inputPath for file in files
 
     @compile source for source in @sources
     @write()
@@ -37,9 +37,9 @@ class Jadebars
     if @options.watch
       @watch i for i in @inputPaths
 
-  addSource: (file) ->
+  addSource: (file, inputPath) ->
 
-    source = file: file, input: path.resolve(file), writeTime: 0
+    source = file: file, input: path.resolve(file), inputPath: inputPath, writeTime: 0
     @sources.push source
     source
 
@@ -93,7 +93,19 @@ class Jadebars
     dir = path.dirname source.file
 
     if @options.output
-      dir = dir.replace source.input, @options.output
+      if source.inputPath[0] is path.sep
+        baseInputDir = source.inputPath.replace '**/*.jade', ''
+        baseInputDir = baseInputDir.replace new RegExp("#{path.basename(baseInputDir)}/$"), ''
+        baseInputDir = path.normalize baseInputDir
+        baseOutputDir = dir.replace baseInputDir, ''
+        baseFragment = baseOutputDir.substr 0, baseOutputDir.indexOf(path.sep)
+        baseDir = baseOutputDir.replace new RegExp("^#{baseFragment}"), ''
+        dir = if baseFragment then path.join(@options.output, baseDir) else @options.output
+      else if source.inputPath.indexOf path.sep
+        baseDir = source.inputPath.substr 0, source.inputPath.indexOf(path.sep)
+        dir = dir.replace new RegExp("^#{baseDir}"), @options.output
+      else
+        dir = @options.output
 
     source.outputPath = path.join dir, fileName
 
