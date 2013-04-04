@@ -37,7 +37,7 @@ class Jadebars
     if @options.watch
       @watch i for i in @inputPaths
 
-  addSource: (file, inputPath) ->
+  addSource: (file, inputPath = file) ->
 
     source = file: file, input: path.resolve(file), inputPath: inputPath, writeTime: 0
     @sources.push source
