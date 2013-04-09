@@ -100,7 +100,7 @@ class Jadebars
     if @options.output
       if source.inputPath[0] is path.sep
         baseInputDir = source.inputPath.replace '**/*.jade', ''
-        baseInputDir = baseInputDir.replace new RegExp("#{path.basename(baseInputDir)}/$"), ''
+        baseInputDir = baseInputDir.replace new RegExp("#{path.basename(baseInputDir)}/?$"), ''
         baseInputDir = path.normalize baseInputDir
         baseOutputDir = dir.replace baseInputDir, ''
         baseFragment = baseOutputDir.substr 0, baseOutputDir.indexOf(path.sep)
