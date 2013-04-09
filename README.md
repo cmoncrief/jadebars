@@ -1,5 +1,7 @@
 # Jadebars
 
+[![Build Status](https://travis-ci.org/cmoncrief/jadebars.png)](https://travis-ci.org/cmoncrief/jadebars)
+
 Jadebars is a simple tool for compiling Jade files into precompiled Handlebars templates. Jadebars can be used from the command line or via its public API.
 
 ### Features
