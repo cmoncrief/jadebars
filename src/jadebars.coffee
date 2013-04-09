@@ -14,11 +14,15 @@ class Jadebars
   constructor: (@inputPaths, @options = {}) ->
 
     @sources = []
-    
+    @known = {}
+
     @options.watch ?= false
     @options.silent ?= true
     @options.minify ?= false
     @options.join = true if @options.output and path.extname(@options.output)
+
+    unless Array.isArray(@options.known) then @options.known = [@options.known]
+    @known[item] = true for item in @options.known if @options.known
 
     @initColors()
     @initPaths()
@@ -53,10 +57,11 @@ class Jadebars
   compile: (source) ->
 
     input = fs.readFileSync source.file, 'utf8'
+    opts = knownHelpers: @known, knownHelpersOnly: @options.knownOnly
 
     try
       html = jade.compile(input, {})()
-      source.compiled = handlebars.precompile html, {}
+      source.compiled = handlebars.precompile html, opts
       source.compileTime = new Date().getTime()
     catch error
       unless @options.silent

@@ -1,6 +1,14 @@
 # Jadebars
 
-Jadebars is a tool for compiling Jade files into precompiled Handlebars templates. Jadebars comes with a command line interface as well as a public API.
+Jadebars is a simple tool for compiling Jade files into precompiled Handlebars templates. Jadebars can be used from the command line or via its public API.
+
+### Features
+
+* Minification
+* Concatenation of multiple files
+* Supports known helper optimizations
+* Robust file watching
+* Cross-platform
 
 ## Installation
 
@@ -13,12 +21,14 @@ Install globally via npm:
 
     Options:
 
-      -h, --help           output usage information
-      -V, --version        output the version number
-      -m, --minify         minify output files
-      -o, --output <path>  output path
-      -s, --silent         suppress console output
-      -w, --watch          watch files for changes
+    -h, --help             output usage information
+    -V, --version          output the version number
+    -k, --known <helpers>  known helpers
+    -K, --knownOnly        known helpers only
+    -m, --minify           minify output files
+    -o, --output <path>    output path
+    -s, --silent           suppress console output
+    -w, --watch            watch files for changes
 
 #### Examples
 
@@ -26,25 +36,25 @@ Compile a single file:
     
     $ jadebars test.jade
 
-Compile an entire directory tree:
+Compile an entire directory tree to an an output directory:
     
-    $ jadebars test/
+    $ jadebars -o output templates
 
-Compile to an output directory:
+Compile a directory tree into a single file:
     
-    $ jadebars input/ -o output/
-
-Compile all input to a single file:
-    
-    $ jadebars input/ -o joined.js
+    $ jadebars -o templates.js templates
 
 Compile with minification:
 
-    $ jadebars input/ -o joined.js -m
+    $ jadebars -m test.jade
 
 Compile and watch for changes:
 
-    $ jadebars input/ -o output/ -w
+    $ jadebars -w templates
+
+All together now (concatenate, minify, and watch):
+
+    $ jadebars -mwo templates.js templates
 
 ## API
 
@@ -54,10 +64,12 @@ Compiles all .jade files found in `inputPaths`, which can be a single string or 
 
 ##### Options:
 
-* `minify` - (boolean) Compress output files. Defaults to false.
-* `output` - (string) The path to the output file. If the path has a file extension, all files will be joined at that location. Otherwise, the path is assumed to be a directory.
-* `silent` - (boolean) Suppress all console output. Defaults to true.
-* `watch` - (boolean) Watch all files and directories for changes and recompile automatically. Defaults to false.
+* `known` - Array of known helpers to pass to the Handlebars compiler. 
+* `knownOnly` - If all helpers are known in advance this may be used to optimize all block helper references. Defaults to false.
+* `minify` - Compress output files. Defaults to false.
+* `output` - The path to the output file. If the path has a file extension, all files will be joined at that location. Otherwise, the path is assumed to be a directory.
+* `silent` - Suppress all console output. Defaults to true.
+* `watch` - Watch all files and directories for changes and recompile automatically. Defaults to false.
 
 ##### Example:
 
