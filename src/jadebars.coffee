@@ -60,7 +60,7 @@ class Jadebars
     opts = knownHelpers: @known, knownHelpersOnly: @options.knownOnly
 
     try
-      html = jade.compile(input, {})()
+      html = jade.compile(input, {filename: source.file})()
       source.compiled = handlebars.precompile html, opts
       source.compileTime = new Date().getTime()
     catch error
