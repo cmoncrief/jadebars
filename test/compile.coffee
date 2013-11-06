@@ -8,6 +8,7 @@ fixturePath = path.join __dirname, 'fixtures'
 files = [
   "test"
   "test2"
+  "include"
   "sub/subtest"
 ]
 

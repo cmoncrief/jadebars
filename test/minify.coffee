@@ -21,4 +21,4 @@ describe 'Minify', ->
     assert.equal testFile, control
 
   after ->
-    #try fs.unlinkSync "#{fixturePath}/minify/test.js"
+    try fs.unlinkSync "#{fixturePath}/minify/test.js"
