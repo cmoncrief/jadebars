@@ -7,7 +7,7 @@ list = (val) ->
 module.exports.run =  ->
 
   program
-    .version('0.3.0')
+    .version('0.4.0')
     .usage('[options] [path ...]')
     .option('-k, --known <helpers>', 'known helpers', list)
     .option('-K, --knownOnly ', 'known helpers only')

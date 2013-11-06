@@ -1,3 +1,8 @@
+11/6/2013 - 0.4.0
+=================
+* Included files are now supported in Jade templates
+* Updated jade, handlebars, commander, glob and uglify-js deps
+
 4/7/2013 - 0.3.0
 =================
 * Added known helper and known only helper optimizations.
