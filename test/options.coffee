@@ -31,7 +31,6 @@ describe 'Options', ->
     controlFile = fs.readFileSync "#{fixturePath}/control/known_only.js", 'utf8'
     assert.equal testFile, controlFile
 
-
   after ->
     removeTestFiles()
 

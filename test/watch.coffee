@@ -41,7 +41,6 @@ describe 'Watch', ->
 
     setTimeout touchFiles, 1000
     
-
   after ->
     for file in files
       try fs.unlinkSync "#{fixturePath}/watch/#{file}.js"
