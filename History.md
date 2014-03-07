@@ -1,3 +1,10 @@
+3/07/2014 - 0.5.0
+=================
+* Updated Beholder to 0.2 to fix file watch issue
+* Updated Coffee-Script for dev deps
+* Updated Handlebars to 1.3.0
+* Updated Jade to 1.3.0
+
 11/6/2013 - 0.4.0
 =================
 * Included files are now supported in Jade templates
