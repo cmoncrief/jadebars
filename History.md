@@ -1,3 +1,8 @@
+3/07/2014 - 0.5.1
+=================
+* Suppress Jade warnings - the line warnings were going off
+  on every single Handlebars instance. 
+
 3/07/2014 - 0.5.0
 =================
 * Updated Beholder to 0.2 to fix file watch issue

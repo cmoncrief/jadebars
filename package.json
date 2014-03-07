@@ -1,6 +1,6 @@
 {
   "name": "jadebars",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "Charles Moncrief <cmoncrief@gmail.com>",
   "description": "Compile Jade to precompiled Handlebars templates",
   "main": "lib/jadebars.js",

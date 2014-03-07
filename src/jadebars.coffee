@@ -60,6 +60,8 @@ class Jadebars
     opts = knownHelpers: @known, knownHelpersOnly: @options.knownOnly
 
     try
+      warnSave = console.warn
+      console.warn = -> return
       html = jade.compile(input, {filename: source.file})()
       source.compiled = handlebars.precompile html, opts
       source.compileTime = new Date().getTime()
@@ -76,7 +78,7 @@ class Jadebars
       @writeOutput i for i in @sources when i.compileTime > i.writeTime
 
   writeOutput: (source, joined) ->
-    
+
     @initOutput source unless joined
     mkdirp.sync path.dirname(source.outputPath)
     fs.writeFileSync source.outputPath, source.output, 'utf8'
@@ -86,7 +88,7 @@ class Jadebars
       xcolor.log "  #{(new Date).toLocaleTimeString()} - {{.boldJade}}Compiled{{/color}} {{.jade}}#{source.outputPath}"
 
   initOutput: (source) ->
-  
+
     @setOutputPath source
     @wrapSource source
 
@@ -115,7 +117,7 @@ class Jadebars
     source.outputPath = path.join dir, fileName
 
   watch: (inputPath) ->
-    
+
     watcher = beholder inputPath
 
     watcher.on 'change', (file) =>
@@ -143,7 +145,7 @@ class Jadebars
       output += "\ntemplates['#{path.basename(i.file, '.jade')}'] = template(#{i.compiled});"
 
     output += "\n})();\n"
-    
+
     output = @minify output if @options.minify
     {outputPath: @options.output, output: output}
 
